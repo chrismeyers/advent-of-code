@@ -1,4 +1,4 @@
-module.exports.solve = (input) => {
+module.exports.solve1 = (input) => {
   const items = input.split('\n');
   let prev;
   let increased = 0;
@@ -10,4 +10,8 @@ module.exports.solve = (input) => {
   });
 
   return increased;
+};
+
+module.exports.solve2 = (input) => {
+  return input;
 };
