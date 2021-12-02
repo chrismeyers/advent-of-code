@@ -7,6 +7,9 @@
     "node": ">= 16"
   },
   "scripts": {
-    "test": "for f in src/*.test.js; do node $f; done"
+    "test": "tap"
+  },
+  "devDependencies": {
+    "tap": "^15.1.5"
   }
 }

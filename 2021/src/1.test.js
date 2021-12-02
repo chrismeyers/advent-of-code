@@ -1,4 +1,4 @@
-const assert = require('assert');
+const tap = require('tap');
 const { solve } = require('./1');
 
 const input = `
@@ -14,16 +14,4 @@ const input = `
 263
 `.trim();
 
-try {
-  const expected = 77;
-  const actual = solve(input);
-  assert.strictEqual(
-    actual,
-    expected,
-    `actual ${actual} !== expected ${expected}`
-  );
-} catch (error) {
-  console.error(__filename);
-  console.error(`  ${error.message}`);
-  process.exit(1);
-}
+tap.equal(solve(input), 7);
