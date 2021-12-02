@@ -1,5 +1,5 @@
 const tap = require('tap');
-const { solve1 } = require('./2');
+const { solve1, solve2 } = require('./2');
 
 const input = `
 forward 5
@@ -11,3 +11,4 @@ forward 2
 `.trim();
 
 tap.equal(solve1(input), 150);
+tap.equal(solve2(input), 900);
