@@ -1,8 +1,9 @@
+#!/usr/bin/env node
 /* eslint-disable no-console */
 const fs = require('fs');
 
-if (process.argv.length < 4) {
-  console.error(`usage: node solver.js problem part`);
+if (process.argv.length < 3) {
+  console.error(`usage: node solver.js problem [part]`);
   process.exit(1);
 }
 
@@ -18,14 +19,12 @@ if (process.argv.length < 4) {
       input = fs.readFileSync(inputFile, { encoding: 'utf-8' }).trim();
     }
 
-    let solution;
-    if (part === 1) {
-      solution = solve1(input);
-    } else if (part === 2) {
-      solution = solve2(input);
+    if (Number.isNaN(part) || part === 1) {
+      console.log(solve1(input));
     }
-
-    console.log(solution);
+    if (Number.isNaN(part) || part === 2) {
+      console.log(solve2(input));
+    }
   } catch (error) {
     console.error(error.message);
   }
