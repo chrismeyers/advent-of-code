@@ -7,9 +7,17 @@
     "node": ">= 16"
   },
   "scripts": {
-    "test": "tap"
+    "test": "tap",
+    "lint": "eslint . --ext .ts,.js --max-warnings 0",
+    "lint:fix": "eslint . --fix --ext .ts,.js"
   },
   "devDependencies": {
+    "eslint": "^8.3.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "2.5.0",
     "tap": "^15.1.5"
   }
 }

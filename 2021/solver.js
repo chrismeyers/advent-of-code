@@ -1,7 +1,9 @@
+/* eslint-disable no-console */
 const fs = require('fs');
 
 if (process.argv.length < 3) {
   console.error(`usage: node solver.js problem`);
+  process.exit(1);
 }
 
 (async () => {

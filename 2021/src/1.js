@@ -5,7 +5,7 @@ module.exports.solve = (input) => {
 
   items.forEach((item) => {
     const parsed = parseInt(item, 10);
-    if (prev && parsed > prev) increased++;
+    if (prev && parsed > prev) increased += 1;
     prev = parsed;
   });
 
