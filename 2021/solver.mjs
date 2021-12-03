@@ -1,11 +1,7 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
 import fs from 'fs';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-// eslint-disable-next-line no-underscore-dangle
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { dirname } from './util.mjs';
 
 if (process.argv.length < 3) {
   console.error(`usage: node solver.mjs day [part]`);
@@ -15,9 +11,11 @@ if (process.argv.length < 3) {
 const day = parseInt(process.argv[2], 10);
 const part = parseInt(process.argv[3], 10);
 try {
-  const { solve1, solve2 } = await import(`${__dirname}/src/day${day}.mjs`);
+  const { solve1, solve2 } = await import(
+    `${dirname(import.meta.url)}/src/day${day}.mjs`
+  );
 
-  const inputFile = `${__dirname}/input/day${day}.txt`;
+  const inputFile = `${dirname(import.meta.url)}/input/day${day}.txt`;
   let input;
   if (fs.existsSync(inputFile)) {
     input = fs.readFileSync(inputFile, { encoding: 'utf-8' }).trim();
