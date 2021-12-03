@@ -2,7 +2,8 @@
   "root": true,
   "extends": ["airbnb-base", "plugin:prettier/recommended"],
   "rules": {
-    "import/extensions": ["error", { "mjs": "always" }]
+    "import/extensions": ["error", { "mjs": "always" }],
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
   },
   "env": {
     "node": true,

@@ -6,3 +6,15 @@ $ node solver.mjs 1
 $ node . 2
 $ ./solver.mjs 2 1
 ```
+
+## Answers
+
+- Day 1
+  - Part 1: 1448
+  - Part 2: 1471
+- Day 2
+  - Part 1: 2147104
+  - Part 2: 2044620088
+- Day 3
+  - Part 1: 2967914
+  - Part 2:
