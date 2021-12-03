@@ -1,4 +1,4 @@
-module.exports.solve1 = (input) => {
+export const solve1 = (input) => {
   const items = input.split('\n');
   let prev;
   let increased = 0;
@@ -12,7 +12,7 @@ module.exports.solve1 = (input) => {
   return increased;
 };
 
-module.exports.solve2 = (input) => {
+export const solve2 = (input) => {
   const items = input.split('\n').map((item) => parseInt(item, 10));
 
   const sums = [];

@@ -1,5 +1,5 @@
-const tap = require('tap');
-const { solve1, solve2 } = require('./1');
+import tap from 'tap';
+import { solve1, solve2 } from './day1.mjs';
 
 const input = `
 199

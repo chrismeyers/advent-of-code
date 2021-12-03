@@ -1,4 +1,4 @@
-module.exports.solve1 = (input) => {
+export const solve1 = (input) => {
   const items = input.split('\n');
 
   let position = 0;
@@ -24,7 +24,7 @@ module.exports.solve1 = (input) => {
   return position * depth;
 };
 
-module.exports.solve2 = (input) => {
+export const solve2 = (input) => {
   const items = input.split('\n');
 
   let position = 0;

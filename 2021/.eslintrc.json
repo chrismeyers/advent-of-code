@@ -1,16 +1,28 @@
 {
   "root": true,
   "extends": ["airbnb-base", "plugin:prettier/recommended"],
+  "rules": {
+    "import/extensions": ["error", { "mjs": "always" }]
+  },
   "env": {
     "node": true,
     "es2021": true
   },
   "parserOptions": {
-    "ecmaVersion": 2021
+    "ecmaVersion": 2022,
+    "sourceType": "module"
   },
   "settings": {
     "node": {
-      "tryExtensions": [".js", ".json", ".ts"]
+      "tryExtensions": [".mjs", ".js", ".json"]
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.{mjs,js}"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ]
 }

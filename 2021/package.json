@@ -1,16 +1,16 @@
 {
   "name": "2021",
   "version": "1.0.0",
-  "main": "solver.js",
+  "main": "solver.mjs",
   "license": "MIT",
   "engines": {
     "node": ">= 16"
   },
   "scripts": {
     "test": "tap",
-    "test:coverage": "tap --coverage-report=lcov src/*.test.js",
-    "lint": "eslint . --ext .ts,.js --max-warnings 0",
-    "lint:fix": "eslint . --fix --ext .ts,.js"
+    "test:coverage": "tap --coverage-report=lcov src/*.test.mjs",
+    "lint": "eslint . --ext .mjs,.js --max-warnings 0",
+    "lint:fix": "eslint . --fix --ext .mjs,.js"
   },
   "devDependencies": {
     "eslint": "^8.3.0",
