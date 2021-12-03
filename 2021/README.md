@@ -17,4 +17,4 @@ $ ./solver.mjs 2 1
   - Part 2: 2044620088
 - Day 3
   - Part 1: 2967914
-  - Part 2:
+  - Part 2: 7041258

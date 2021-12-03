@@ -17,4 +17,4 @@ const input = `
 `.trim();
 
 tap.equal(solve1(input), 198);
-tap.equal(solve2(input), input);
+tap.equal(solve2(input), 230);
