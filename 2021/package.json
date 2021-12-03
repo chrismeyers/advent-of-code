@@ -7,12 +7,13 @@
     "node": ">= 16"
   },
   "scripts": {
-    "test": "tap",
-    "test:coverage": "tap --coverage-report=lcov src/*.test.mjs",
+    "test": "c8 tap --no-coverage",
+    "test:coverage": "c8 --reporter=lcov tap --no-coverage src/*.test.mjs",
     "lint": "eslint . --ext .mjs,.js --max-warnings 0",
     "lint:fix": "eslint . --fix --ext .mjs,.js"
   },
   "devDependencies": {
+    "c8": "^7.10.0",
     "eslint": "^8.3.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.3.0",
