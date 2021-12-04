@@ -32,7 +32,20 @@ tap.test('works with example input', (t) => {
   t.end();
 });
 
-tap.test('detects part 1 vertical win', (t) => {
+tap.test('works with puzzle input', (t) => {
+  const input = fs
+    .readFileSync(`${dirname(import.meta.url)}/../input/day4.txt`, {
+      encoding: 'utf-8',
+    })
+    .trim();
+
+  t.equal(solve1(input), 58374);
+  t.equal(solve2(input), 11377);
+
+  t.end();
+});
+
+tap.test('detects part 1 vertical win in first column', (t) => {
   const input = `
 22,8,21,6,1,17,23,2,0,14,9,24,10,16,13,5,15,25,12,7,18,20,4,19,3,26,11
 
@@ -48,15 +61,18 @@ tap.test('detects part 1 vertical win', (t) => {
   t.end();
 });
 
-tap.test('works with puzzle input', (t) => {
-  const input = fs
-    .readFileSync(`${dirname(import.meta.url)}/../input/day4.txt`, {
-      encoding: 'utf-8',
-    })
-    .trim();
+tap.test('detects part 1 vertical win in non-first column', (t) => {
+  const input = `
+17,23,14,3,20,7,4,2,0,9,21,24,10,16,13,6,15,25,12,22,18,11,8,19,5,26,1
 
-  t.equal(solve1(input), 58374);
-  t.equal(solve2(input), 11377);
+22 13 17 11  0
+ 8  2 23  4 24
+21  9 14 16  7
+ 6 10  3 18  5
+ 1 12 20 15 19
+`.trim();
+
+  t.equal(solve1(input), 4460);
 
   t.end();
 });

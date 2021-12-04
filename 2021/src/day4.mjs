@@ -1,6 +1,5 @@
 export const solve1 = (input) => {
-  const ROWS = 5;
-  const COLUMNS = 5;
+  const SIZE = 5;
   const items = input.split(/\n\s*\n/);
 
   const numbers = items[0].split(',').map((n) => parseInt(n, 10));
@@ -27,24 +26,24 @@ export const solve1 = (input) => {
     for (let j = 0; j < boards.length; j++) {
       if (winner) break;
       const board = boards[j];
-      // Horizontal win
-      for (let k = 0; k < COLUMNS; k++) {
+      for (let k = 0; k < SIZE; k++) {
+        // Horizontal win
         if (
-          board[k * COLUMNS].marked &&
-          board[k * COLUMNS + 1].marked &&
-          board[k * COLUMNS + 2].marked &&
-          board[k * COLUMNS + 3].marked &&
-          board[k * COLUMNS + 4].marked
+          board[k * SIZE].marked &&
+          board[k * SIZE + 1].marked &&
+          board[k * SIZE + 2].marked &&
+          board[k * SIZE + 3].marked &&
+          board[k * SIZE + 4].marked
         ) {
           winner = board;
         }
         // Vertical win
         if (
-          board[k * ROWS].marked &&
-          board[k + 1 * ROWS].marked &&
-          board[k + 2 * ROWS].marked &&
-          board[k + 3 * ROWS].marked &&
-          board[k + 4 * ROWS].marked
+          board[k].marked &&
+          board[k + 1 * SIZE].marked &&
+          board[k + 2 * SIZE].marked &&
+          board[k + 3 * SIZE].marked &&
+          board[k + 4 * SIZE].marked
         ) {
           winner = board;
         }
