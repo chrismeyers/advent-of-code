@@ -27,7 +27,7 @@ tap.test('works with example input', (t) => {
 `.trim();
 
   t.equal(solve1(input), 4512);
-  t.equal(solve2(input), input);
+  t.equal(solve2(input), 1924);
 
   t.end();
 });
@@ -56,6 +56,7 @@ tap.test('works with puzzle input', (t) => {
     .trim();
 
   t.equal(solve1(input), 58374);
+  t.equal(solve2(input), 11377);
 
   t.end();
 });
