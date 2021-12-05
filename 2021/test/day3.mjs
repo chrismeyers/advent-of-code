@@ -1,6 +1,6 @@
 import fs from 'fs';
 import tap from 'tap';
-import { solve1, solve2 } from './day3.mjs';
+import { solve1, solve2 } from '../src/day3.mjs';
 import { dirname } from '../util.mjs';
 
 tap.test('works with example input', (t) => {
