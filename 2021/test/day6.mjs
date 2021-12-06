@@ -7,7 +7,7 @@ tap.test('works with example input', (t) => {
   const input = '3,4,3,1,2';
 
   t.equal(solve1(input), 5934);
-  t.equal(solve2(input), input);
+  t.equal(solve2(input), 26984457539);
 
   t.end();
 });
@@ -20,7 +20,7 @@ tap.test('works with puzzle input', (t) => {
     .trim();
 
   t.equal(solve1(input), 352151);
-  t.equal(solve2(input), input);
+  t.equal(solve2(input), 1601616884019);
 
   t.end();
 });
