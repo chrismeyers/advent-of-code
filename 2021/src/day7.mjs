@@ -27,8 +27,7 @@ export const solve2 = (input) => {
   for (let i = 0; i < items.length; i++) {
     let amount = 0;
     for (let j = 0; j < items.length; j++) {
-      const inc = calculate(Math.abs(items[j] - i));
-      amount += inc;
+      amount += calculate(Math.abs(items[j] - i));
     }
     if (!cost || amount < cost) cost = amount;
   }
