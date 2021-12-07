@@ -26,7 +26,7 @@ tap.test('works with example input', (t) => {
 });
 
 tap.test('works with puzzle input', (t) => {
-  const input = fs
+  let input = fs
     .readFileSync(`${dirname(import.meta.url)}/../input/day3.txt`, {
       encoding: 'utf-8',
     })
@@ -34,6 +34,15 @@ tap.test('works with puzzle input', (t) => {
 
   t.equal(solve1(input), 2967914);
   t.equal(solve2(input), 7041258);
+
+  input = fs
+    .readFileSync(`${dirname(import.meta.url)}/../input/day3.alt.txt`, {
+      encoding: 'utf-8',
+    })
+    .trim();
+
+  t.equal(solve1(input), 3549854);
+  t.equal(solve2(input), 3765399);
 
   t.end();
 });
