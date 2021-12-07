@@ -36,25 +36,6 @@ export class Counter {
   }
 
   /**
-   * Attempts to retrieve an item from the collection
-   *
-   * @param {any} item Item to retrieve
-   * @returns {number|undefined}
-   */
-  get(item) {
-    return this.data.get(item);
-  }
-
-  /**
-   * Iterates over each item in the collection
-   *
-   * @param fn Callback function
-   */
-  forEach(fn) {
-    this.data.forEach(fn);
-  }
-
-  /**
    * Returns all the keys in the collection
    *
    * @returns {any[]} Keys in the collection

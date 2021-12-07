@@ -1,57 +1,56 @@
 import tap from 'tap';
 import { Counter } from '../util.mjs';
 
-tap.test('Counter initializes with no items', (t) => {
-  const counter = new Counter();
+tap.test('Counter', (t) => {
+  t.test('initializes with no items', (tt) => {
+    const counter = new Counter();
 
-  t.strictSame(counter.keys(), []);
-  t.strictSame(counter.values(), []);
-  t.equal(counter.get('apples'), undefined);
+    tt.strictSame(counter.keys(), []);
+    tt.strictSame(counter.values(), []);
+    tt.equal(counter.data.get('apples'), undefined);
 
-  t.end();
-});
-
-tap.test('Counter initializes with items', (t) => {
-  const counter = new Counter(['apples', 'bananas']);
-
-  t.strictSame(counter.keys(), ['apples', 'bananas']);
-  t.strictSame(counter.values(), [1, 1]);
-
-  t.end();
-});
-
-tap.test('Counter increments items', (t) => {
-  const counter = new Counter(['apples']);
-
-  counter.inc('apples');
-  t.equal(counter.get('apples'), 2);
-
-  counter.inc('apples', 2);
-  t.equal(counter.get('apples'), 4);
-
-  t.end();
-});
-
-tap.test('Counter sets new items not specified in constructor', (t) => {
-  const counter = new Counter();
-
-  counter.inc('apples');
-  t.equal(counter.get('apples'), 1);
-  t.strictSame(counter.keys(), ['apples']);
-  t.strictSame(counter.values(), [1]);
-
-  t.end();
-});
-
-tap.test('Counter loops over all items', (t) => {
-  const counter = new Counter(['a', 'b', 'c', 'd']);
-
-  const results = {};
-  counter.forEach((v, k) => {
-    results[k] = v;
+    tt.end();
   });
 
-  t.strictSame(results, { a: 1, b: 1, c: 1, d: 1 });
+  t.test('initializes with items', (tt) => {
+    const counter = new Counter(['apples', 'bananas']);
+
+    tt.strictSame(counter.keys(), ['apples', 'bananas']);
+    tt.strictSame(counter.values(), [1, 1]);
+
+    tt.end();
+  });
+
+  t.test('increments items', (tt) => {
+    const counter = new Counter(['apples']);
+
+    counter.inc('apples');
+    tt.equal(counter.data.get('apples'), 2);
+
+    counter.inc('apples', 2);
+    tt.equal(counter.data.get('apples'), 4);
+
+    tt.end();
+  });
+
+  t.test('sets new items not specified in constructor', (tt) => {
+    const counter = new Counter();
+
+    counter.inc('apples');
+    tt.equal(counter.data.get('apples'), 1);
+    tt.strictSame(counter.keys(), ['apples']);
+    tt.strictSame(counter.values(), [1]);
+
+    tt.end();
+  });
+
+  t.test('exposes underlying Map', (tt) => {
+    const counter = new Counter();
+
+    tt.type(counter.data, Map);
+
+    tt.end();
+  });
 
   t.end();
 });

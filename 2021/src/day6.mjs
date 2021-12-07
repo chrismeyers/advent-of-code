@@ -23,7 +23,7 @@ export const solve2 = (input) => {
   let fishes = new Counter(items);
   for (let i = 0; i < 256; i++) {
     const newFishes = new Counter();
-    fishes.forEach((v, k) => {
+    fishes.data.forEach((v, k) => {
       if (k === 0) {
         newFishes.inc(6, v);
         newFishes.inc(8, v);
