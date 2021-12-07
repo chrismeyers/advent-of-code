@@ -6,3 +6,9 @@ $ node solver.mjs 1
 $ node . 2
 $ ./solver.mjs 2 1
 ```
+
+Templates can be generated for a new day by using `generator.mjs` and specifying a day number. The generator can be invoked in the following ways:
+```sh
+$ node generator.mjs 1
+$ ./generator.mjs 2
+```
