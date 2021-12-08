@@ -4,7 +4,7 @@ import { solve1, solve2 } from '../src/day8.mjs';
 import { dirname } from '../util.mjs';
 
 tap.test('works with example input', (t) => {
-  const input = `
+  let input = `
 be cfbegad cbdgef fgaecd cgeb fdcge agebfd fecdb fabcd edb | fdgacbe cefdb cefbgd gcbe
 edbfga begcd cbg gc gcadebf fbgde acbgfd abcde gfcbed gfec | fcgedb cgb dgebacf gc
 fgaebd cg bdaec gdafb agbcfd gdcbef bgcad gfac gcb cdgabef | cg cg fdcagb cbg
@@ -18,7 +18,12 @@ gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc | fgae cfgab fg bagce
 `.trim();
 
   t.equal(solve1(input), 26);
-  t.equal(solve2(input), input);
+  t.equal(solve2(input), 61229);
+
+  input =
+    'acedgfb cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab | cdfeb fcadb cdfeb cdbaf';
+
+  t.equal(solve2(input), 5353);
 
   t.end();
 });
@@ -31,7 +36,7 @@ tap.test('works with puzzle input', (t) => {
     .trim();
 
   t.equal(solve1(input), 261);
-  t.equal(solve2(input), input);
+  t.equal(solve2(input), 987553);
 
   t.end();
 });
