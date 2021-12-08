@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
 import fs from 'fs';
-import * as readline from 'node:readline/promises'; // eslint-disable-line import/no-unresolved
+import * as readline from 'readline/promises';
 import { stdin as input, stdout as output } from 'process';
 import { dirname } from './util.mjs';
 
