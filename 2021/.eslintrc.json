@@ -1,9 +1,11 @@
 {
   "root": true,
   "extends": ["airbnb-base", "plugin:prettier/recommended"],
+  "plugins": ["unicorn"],
   "rules": {
     "import/extensions": ["error", { "mjs": "always" }],
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "unicorn/prefer-node-protocol": ["error", { "checkRequire": true }]
   },
   "env": {
     "node": true,
