@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import tap from 'tap';
 import { solve1, solve2 } from '../src/day2.mjs';
 import { dirname } from '../util.mjs';

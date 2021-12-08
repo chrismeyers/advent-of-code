@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
-import fs from 'fs';
+import fs from 'node:fs';
 import { dirname } from './util.mjs';
 
 if (process.argv.length < 3) {

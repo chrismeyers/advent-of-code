@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
-import fs from 'fs';
-import * as readline from 'readline/promises';
-import { stdin as input, stdout as output } from 'process';
+import fs from 'node:fs';
+import * as readline from 'node:readline/promises';
+import { stdin as input, stdout as output } from 'node:process';
 import { dirname } from './util.mjs';
 
 if (process.argv.length < 3) {
@@ -37,7 +37,7 @@ export const solve2 = (input) => {
   },
   {
     path: `${dirname(import.meta.url)}/test/day${day}.mjs`,
-    template: `import fs from 'fs';
+    template: `import fs from 'node:fs';
 import tap from 'tap';
 import { solve1, solve2 } from '../src/day${day}.mjs';
 import { dirname } from '../util.mjs';
