@@ -6,86 +6,38 @@ export const solve1 = (input) => {
   let flashes = 0;
   let flashed;
 
+  let process; // "Forward declare" function
+
   const flash = (x, y) => {
     // Left
-    if (x - 1 >= 0 && !flashed[y][x - 1]) {
-      items[y][x - 1] += 1;
-      if (items[y][x - 1] > 9) {
-        items[y][x - 1] = 0;
-        flashed[y][x - 1] = true;
-        flashes += 1;
-        flash(x - 1, y);
-      }
-    }
+    if (x - 1 >= 0 && !flashed[y][x - 1]) process(x - 1, y);
     // Right
-    if (x + 1 <= columns - 1 && !flashed[y][x + 1]) {
-      items[y][x + 1] += 1;
-      if (items[y][x + 1] > 9) {
-        items[y][x + 1] = 0;
-        flashed[y][x + 1] = true;
-        flashes += 1;
-        flash(x + 1, y);
-      }
-    }
+    if (x + 1 <= columns - 1 && !flashed[y][x + 1]) process(x + 1, y);
     // Up
-    if (y - 1 >= 0 && !flashed[y - 1][x]) {
-      items[y - 1][x] += 1;
-      if (items[y - 1][x] > 9) {
-        items[y - 1][x] = 0;
-        flashed[y - 1][x] = true;
-        flashes += 1;
-        flash(x, y - 1);
-      }
-    }
+    if (y - 1 >= 0 && !flashed[y - 1][x]) process(x, y - 1);
     // Down
-    if (y + 1 <= rows - 1 && !flashed[y + 1][x]) {
-      items[y + 1][x] += 1;
-      if (items[y + 1][x] > 9) {
-        items[y + 1][x] = 0;
-        flashed[y + 1][x] = true;
-        flashes += 1;
-        flash(x, y + 1);
-      }
-    }
+    if (y + 1 <= rows - 1 && !flashed[y + 1][x]) process(x, y + 1);
     // Up left
-    if (y - 1 >= 0 && x - 1 >= 0 && !flashed[y - 1][x - 1]) {
-      items[y - 1][x - 1] += 1;
-      if (items[y - 1][x - 1] > 9) {
-        items[y - 1][x - 1] = 0;
-        flashed[y - 1][x - 1] = true;
-        flashes += 1;
-        flash(x - 1, y - 1);
-      }
-    }
+    if (y - 1 >= 0 && x - 1 >= 0 && !flashed[y - 1][x - 1])
+      process(x - 1, y - 1);
     // Up right
-    if (y - 1 >= 0 && x + 1 <= columns - 1 && !flashed[y - 1][x + 1]) {
-      items[y - 1][x + 1] += 1;
-      if (items[y - 1][x + 1] > 9) {
-        items[y - 1][x + 1] = 0;
-        flashed[y - 1][x + 1] = true;
-        flashes += 1;
-        flash(x + 1, y - 1);
-      }
-    }
+    if (y - 1 >= 0 && x + 1 <= columns - 1 && !flashed[y - 1][x + 1])
+      process(x + 1, y - 1);
     // Down left
-    if (y + 1 <= rows - 1 && x - 1 >= 0 && !flashed[y + 1][x - 1]) {
-      items[y + 1][x - 1] += 1;
-      if (items[y + 1][x - 1] > 9) {
-        items[y + 1][x - 1] = 0;
-        flashed[y + 1][x - 1] = true;
-        flashes += 1;
-        flash(x - 1, y + 1);
-      }
-    }
+    if (y + 1 <= rows - 1 && x - 1 >= 0 && !flashed[y + 1][x - 1])
+      process(x - 1, y + 1);
     // Down right
-    if (y + 1 <= rows - 1 && x + 1 <= columns - 1 && !flashed[y + 1][x + 1]) {
-      items[y + 1][x + 1] += 1;
-      if (items[y + 1][x + 1] > 9) {
-        items[y + 1][x + 1] = 0;
-        flashed[y + 1][x + 1] = true;
-        flashes += 1;
-        flash(x + 1, y + 1);
-      }
+    if (y + 1 <= rows - 1 && x + 1 <= columns - 1 && !flashed[y + 1][x + 1])
+      process(x + 1, y + 1);
+  };
+
+  process = (x, y) => {
+    items[y][x] += 1;
+    if (items[y][x] > 9) {
+      items[y][x] = 0;
+      flashed[y][x] = true;
+      flashes += 1;
+      flash(x, y);
     }
   };
 
@@ -97,13 +49,7 @@ export const solve1 = (input) => {
     for (let y = 0; y < rows; y++) {
       for (let x = 0; x < columns; x++) {
         if (!flashed[y][x]) {
-          items[y][x] += 1;
-          if (items[y][x] > 9) {
-            items[y][x] = 0;
-            flashed[y][x] = true;
-            flashes += 1;
-            flash(x, y);
-          }
+          process(x, y);
         }
       }
     }
@@ -119,78 +65,37 @@ export const solve2 = (input) => {
   const rows = items.length;
   let flashed;
 
+  let process; // "Forward declare" function
+
   const flash = (x, y) => {
     // Left
-    if (x - 1 >= 0 && !flashed[y][x - 1]) {
-      items[y][x - 1] += 1;
-      if (items[y][x - 1] > 9) {
-        items[y][x - 1] = 0;
-        flashed[y][x - 1] = true;
-        flash(x - 1, y);
-      }
-    }
+    if (x - 1 >= 0 && !flashed[y][x - 1]) process(x - 1, y);
     // Right
-    if (x + 1 <= columns - 1 && !flashed[y][x + 1]) {
-      items[y][x + 1] += 1;
-      if (items[y][x + 1] > 9) {
-        items[y][x + 1] = 0;
-        flashed[y][x + 1] = true;
-        flash(x + 1, y);
-      }
-    }
+    if (x + 1 <= columns - 1 && !flashed[y][x + 1]) process(x + 1, y);
     // Up
-    if (y - 1 >= 0 && !flashed[y - 1][x]) {
-      items[y - 1][x] += 1;
-      if (items[y - 1][x] > 9) {
-        items[y - 1][x] = 0;
-        flashed[y - 1][x] = true;
-        flash(x, y - 1);
-      }
-    }
+    if (y - 1 >= 0 && !flashed[y - 1][x]) process(x, y - 1);
     // Down
-    if (y + 1 <= rows - 1 && !flashed[y + 1][x]) {
-      items[y + 1][x] += 1;
-      if (items[y + 1][x] > 9) {
-        items[y + 1][x] = 0;
-        flashed[y + 1][x] = true;
-        flash(x, y + 1);
-      }
-    }
+    if (y + 1 <= rows - 1 && !flashed[y + 1][x]) process(x, y + 1);
     // Up left
-    if (y - 1 >= 0 && x - 1 >= 0 && !flashed[y - 1][x - 1]) {
-      items[y - 1][x - 1] += 1;
-      if (items[y - 1][x - 1] > 9) {
-        items[y - 1][x - 1] = 0;
-        flashed[y - 1][x - 1] = true;
-        flash(x - 1, y - 1);
-      }
-    }
+    if (y - 1 >= 0 && x - 1 >= 0 && !flashed[y - 1][x - 1])
+      process(x - 1, y - 1);
     // Up right
-    if (y - 1 >= 0 && x + 1 <= columns - 1 && !flashed[y - 1][x + 1]) {
-      items[y - 1][x + 1] += 1;
-      if (items[y - 1][x + 1] > 9) {
-        items[y - 1][x + 1] = 0;
-        flashed[y - 1][x + 1] = true;
-        flash(x + 1, y - 1);
-      }
-    }
+    if (y - 1 >= 0 && x + 1 <= columns - 1 && !flashed[y - 1][x + 1])
+      process(x + 1, y - 1);
     // Down left
-    if (y + 1 <= rows - 1 && x - 1 >= 0 && !flashed[y + 1][x - 1]) {
-      items[y + 1][x - 1] += 1;
-      if (items[y + 1][x - 1] > 9) {
-        items[y + 1][x - 1] = 0;
-        flashed[y + 1][x - 1] = true;
-        flash(x - 1, y + 1);
-      }
-    }
+    if (y + 1 <= rows - 1 && x - 1 >= 0 && !flashed[y + 1][x - 1])
+      process(x - 1, y + 1);
     // Down right
-    if (y + 1 <= rows - 1 && x + 1 <= columns - 1 && !flashed[y + 1][x + 1]) {
-      items[y + 1][x + 1] += 1;
-      if (items[y + 1][x + 1] > 9) {
-        items[y + 1][x + 1] = 0;
-        flashed[y + 1][x + 1] = true;
-        flash(x + 1, y + 1);
-      }
+    if (y + 1 <= rows - 1 && x + 1 <= columns - 1 && !flashed[y + 1][x + 1])
+      process(x + 1, y + 1);
+  };
+
+  process = (x, y) => {
+    items[y][x] += 1;
+    if (items[y][x] > 9) {
+      items[y][x] = 0;
+      flashed[y][x] = true;
+      flash(x, y);
     }
   };
 
@@ -206,12 +111,7 @@ export const solve2 = (input) => {
     for (let y = 0; y < rows; y++) {
       for (let x = 0; x < columns; x++) {
         if (!flashed[y][x]) {
-          items[y][x] += 1;
-          if (items[y][x] > 9) {
-            items[y][x] = 0;
-            flashed[y][x] = true;
-            flash(x, y);
-          }
+          process(x, y);
         }
       }
     }
