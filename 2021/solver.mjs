@@ -8,7 +8,7 @@ if (process.argv.length < 3) {
   process.exit(1);
 }
 
-const day = parseInt(process.argv[2], 10);
+const day = String(process.argv[2]).padStart(2, '0');
 const part = parseInt(process.argv[3], 10);
 
 let solve1;

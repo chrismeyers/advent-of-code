@@ -11,19 +11,20 @@ if (process.argv.length < 3) {
 }
 
 const day = parseInt(process.argv[2], 10);
+const dayPadded = String(day).padStart(2, '0');
 
 const rl = readline.createInterface({ input, output });
 const affirmative = (value) => ['y', 'yes'].includes(value.toLowerCase());
 
 const files = [
   {
-    path: `${dirname(import.meta.url)}/input/day${day}.txt`,
+    path: `${dirname(import.meta.url)}/input/day${dayPadded}.txt`,
     template: '',
     prompt: 'input file',
     message: 'empty input file',
   },
   {
-    path: `${dirname(import.meta.url)}/src/day${day}.mjs`,
+    path: `${dirname(import.meta.url)}/src/day${dayPadded}.mjs`,
     template: `export const solve1 = (input) => {
   return input;
 };
@@ -36,10 +37,10 @@ export const solve2 = (input) => {
     message: 'source template',
   },
   {
-    path: `${dirname(import.meta.url)}/test/day${day}.mjs`,
+    path: `${dirname(import.meta.url)}/test/day${dayPadded}.mjs`,
     template: `import fs from 'node:fs';
 import tap from 'tap';
-import { solve1, solve2 } from '../src/day${day}.mjs';
+import { solve1, solve2 } from '../src/day${dayPadded}.mjs';
 import { dirname } from '../util.mjs';
 
 tap.test('works with example input', (t) => {
@@ -53,7 +54,7 @@ tap.test('works with example input', (t) => {
 
 tap.test('works with puzzle input', (t) => {
   const input = fs
-    .readFileSync(\`\${dirname(import.meta.url)}/../input/day${day}.txt\`, {
+    .readFileSync(\`\${dirname(import.meta.url)}/../input/day${dayPadded}.txt\`, {
       encoding: 'utf-8',
     })
     .trim();
