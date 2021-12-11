@@ -6,9 +6,19 @@ export const solve1 = (input) => {
   let flashes = 0;
   let flashed;
 
-  let process; // "Forward declare" function
+  let flash; // "Forward declare" function
 
-  const flash = (x, y) => {
+  const process = (x, y) => {
+    items[y][x] += 1;
+    if (items[y][x] > 9) {
+      items[y][x] = 0;
+      flashed[y][x] = true;
+      flashes += 1;
+      flash(x, y);
+    }
+  };
+
+  flash = (x, y) => {
     // Left
     if (x - 1 >= 0 && !flashed[y][x - 1]) process(x - 1, y);
     // Right
@@ -29,16 +39,6 @@ export const solve1 = (input) => {
     // Down right
     if (y + 1 <= rows - 1 && x + 1 <= columns - 1 && !flashed[y + 1][x + 1])
       process(x + 1, y + 1);
-  };
-
-  process = (x, y) => {
-    items[y][x] += 1;
-    if (items[y][x] > 9) {
-      items[y][x] = 0;
-      flashed[y][x] = true;
-      flashes += 1;
-      flash(x, y);
-    }
   };
 
   for (let i = 0; i < 100; i++) {
@@ -65,9 +65,18 @@ export const solve2 = (input) => {
   const rows = items.length;
   let flashed;
 
-  let process; // "Forward declare" function
+  let flash; // "Forward declare" function
 
-  const flash = (x, y) => {
+  const process = (x, y) => {
+    items[y][x] += 1;
+    if (items[y][x] > 9) {
+      items[y][x] = 0;
+      flashed[y][x] = true;
+      flash(x, y);
+    }
+  };
+
+  flash = (x, y) => {
     // Left
     if (x - 1 >= 0 && !flashed[y][x - 1]) process(x - 1, y);
     // Right
@@ -88,15 +97,6 @@ export const solve2 = (input) => {
     // Down right
     if (y + 1 <= rows - 1 && x + 1 <= columns - 1 && !flashed[y + 1][x + 1])
       process(x + 1, y + 1);
-  };
-
-  process = (x, y) => {
-    items[y][x] += 1;
-    if (items[y][x] > 9) {
-      items[y][x] = 0;
-      flashed[y][x] = true;
-      flash(x, y);
-    }
   };
 
   const simultaneous = () =>
