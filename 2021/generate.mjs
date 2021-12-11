@@ -44,7 +44,7 @@ import { solve1, solve2 } from '../src/day${dayPadded}.mjs';
 import { dirname } from '../util.mjs';
 
 tap.test('works with example input', (t) => {
-  const input = '';
+  const input = \`\`.trim();
 
   t.equal(solve1(input), input);
   t.equal(solve2(input), input);
