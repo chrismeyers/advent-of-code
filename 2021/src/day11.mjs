@@ -91,8 +91,8 @@ export const solve1 = (input) => {
 
   for (let i = 0; i < 100; i++) {
     flashed = new Array(rows);
-    for (let ii = 0; ii < flashed.length; ii++) {
-      flashed[ii] = new Array(columns).fill(false);
+    for (let j = 0; j < flashed.length; j++) {
+      flashed[j] = new Array(columns).fill(false);
     }
     for (let y = 0; y < rows; y++) {
       for (let x = 0; x < columns; x++) {
@@ -200,8 +200,8 @@ export const solve2 = (input) => {
   let step = 0;
   while (!simultaneous()) {
     flashed = new Array(rows);
-    for (let ii = 0; ii < flashed.length; ii++) {
-      flashed[ii] = new Array(columns).fill(false);
+    for (let j = 0; j < flashed.length; j++) {
+      flashed[j] = new Array(columns).fill(false);
     }
     for (let y = 0; y < rows; y++) {
       for (let x = 0; x < columns; x++) {
