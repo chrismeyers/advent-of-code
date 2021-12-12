@@ -13,21 +13,21 @@ export const solve1 = (input) => {
   });
 
   let paths = 0;
-  const walk = (node, smalls) => {
-    if (node.toLowerCase() === node && smalls.data.get(node) > 0) return;
+  const walk = (node, counts) => {
+    if (node.toLowerCase() === node && counts.data.get(node) > 0) return;
 
     if (node === 'end') {
       paths += 1;
       return;
     }
 
-    smalls.inc(node);
+    counts.inc(node);
 
     for (let i = 0; i < adj.get(node).length; i++) {
-      walk(adj.get(node)[i], smalls);
+      walk(adj.get(node)[i], counts);
     }
 
-    smalls.dec(node);
+    counts.dec(node);
   };
 
   walk('start', new Counter());
@@ -48,8 +48,8 @@ export const solve2 = (input) => {
   });
 
   let paths = 0;
-  const walk = (node, smalls, skip) => {
-    if (node.toLowerCase() === node && smalls.data.get(node) > 0) {
+  const walk = (node, counts, skip) => {
+    if (node.toLowerCase() === node && counts.data.get(node) > 0) {
       if (node === 'start' || skip) return;
       skip = true; // eslint-disable-line no-param-reassign
     }
@@ -59,13 +59,13 @@ export const solve2 = (input) => {
       return;
     }
 
-    smalls.inc(node);
+    counts.inc(node);
 
     for (let i = 0; i < adj.get(node).length; i++) {
-      walk(adj.get(node)[i], smalls, skip);
+      walk(adj.get(node)[i], counts, skip);
     }
 
-    smalls.dec(node);
+    counts.dec(node);
   };
 
   walk('start', new Counter(), false);
