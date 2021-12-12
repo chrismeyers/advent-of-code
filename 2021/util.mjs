@@ -36,6 +36,16 @@ export class Counter {
   }
 
   /**
+   * Decrements the given item by the given amount
+   *
+   * @param {any} item Item to decrement or initialize
+   * @param {number} [amount=1] Amount to decrement item by
+   */
+  dec(item, amount = 1) {
+    this.inc(item, -amount);
+  }
+
+  /**
    * Returns all the keys in the collection
    *
    * @returns {any[]} Keys in the collection

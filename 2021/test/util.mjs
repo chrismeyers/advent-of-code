@@ -33,6 +33,19 @@ tap.test('Counter', (t) => {
     tt.end();
   });
 
+  t.test('decrements items', (tt) => {
+    const counter = new Counter(['apples']);
+
+    counter.dec('apples');
+    tt.equal(counter.data.get('apples'), 0);
+
+    counter.inc('apples', 10);
+    counter.dec('apples', 7);
+    tt.equal(counter.data.get('apples'), 3);
+
+    tt.end();
+  });
+
   t.test('sets new items not specified in constructor', (tt) => {
     const counter = new Counter();
 
