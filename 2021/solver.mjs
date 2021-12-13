@@ -15,14 +15,14 @@ let solve1;
 let solve2;
 try {
   ({ solve1, solve2 } = await import(
-    `${dirname(import.meta.url)}/src/day${day}.mjs`
+    `${dirname(import.meta.url)}/src/${day}.mjs`
   ));
 } catch (error) {
   console.error(error.message);
   process.exit(1);
 }
 
-const inputFile = `${dirname(import.meta.url)}/input/day${day}.txt`;
+const inputFile = `${dirname(import.meta.url)}/input/${day}.txt`;
 if (!fs.existsSync(inputFile)) {
   console.error(`Input file '${inputFile}' does not exist`);
   process.exit(1);

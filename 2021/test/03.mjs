@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import tap from 'tap';
-import { solve1, solve2 } from '../src/day03.mjs';
+import { solve1, solve2 } from '../src/03.mjs';
 import { dirname } from '../util.mjs';
 
 tap.test('works with example input', (t) => {
@@ -27,7 +27,7 @@ tap.test('works with example input', (t) => {
 
 tap.test('works with puzzle input', (t) => {
   let input = fs
-    .readFileSync(`${dirname(import.meta.url)}/../input/day03.txt`, {
+    .readFileSync(`${dirname(import.meta.url)}/../input/03.txt`, {
       encoding: 'utf-8',
     })
     .trim();
@@ -36,7 +36,7 @@ tap.test('works with puzzle input', (t) => {
   t.equal(solve2(input), 7041258);
 
   input = fs
-    .readFileSync(`${dirname(import.meta.url)}/../input/day03.alt.txt`, {
+    .readFileSync(`${dirname(import.meta.url)}/../input/03.alt.txt`, {
       encoding: 'utf-8',
     })
     .trim();

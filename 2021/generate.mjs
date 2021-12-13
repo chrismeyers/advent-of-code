@@ -18,13 +18,13 @@ const affirmative = (value) => ['y', 'yes'].includes(value.toLowerCase());
 
 const files = [
   {
-    path: `${dirname(import.meta.url)}/input/day${dayPadded}.txt`,
+    path: `${dirname(import.meta.url)}/input/${dayPadded}.txt`,
     template: '',
     prompt: 'input file',
     message: 'empty input file',
   },
   {
-    path: `${dirname(import.meta.url)}/src/day${dayPadded}.mjs`,
+    path: `${dirname(import.meta.url)}/src/${dayPadded}.mjs`,
     template: `export const solve1 = (input) => {
   return input;
 };
@@ -37,10 +37,10 @@ export const solve2 = (input) => {
     message: 'source template',
   },
   {
-    path: `${dirname(import.meta.url)}/test/day${dayPadded}.mjs`,
+    path: `${dirname(import.meta.url)}/test/${dayPadded}.mjs`,
     template: `import fs from 'node:fs';
 import tap from 'tap';
-import { solve1, solve2 } from '../src/day${dayPadded}.mjs';
+import { solve1, solve2 } from '../src/${dayPadded}.mjs';
 import { dirname } from '../util.mjs';
 
 tap.test('works with example input', (t) => {
@@ -54,7 +54,7 @@ tap.test('works with example input', (t) => {
 
 tap.test('works with puzzle input', (t) => {
   const input = fs
-    .readFileSync(\`\${dirname(import.meta.url)}/../input/day${dayPadded}.txt\`, {
+    .readFileSync(\`\${dirname(import.meta.url)}/../input/${dayPadded}.txt\`, {
       encoding: 'utf-8',
     })
     .trim();

@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import tap from 'tap';
-import { solve1, solve2 } from '../src/day08.mjs';
+import { solve1, solve2 } from '../src/08.mjs';
 import { dirname } from '../util.mjs';
 
 tap.test('works with example input', (t) => {
@@ -30,7 +30,7 @@ gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc | fgae cfgab fg bagce
 
 tap.test('works with puzzle input', (t) => {
   const input = fs
-    .readFileSync(`${dirname(import.meta.url)}/../input/day08.txt`, {
+    .readFileSync(`${dirname(import.meta.url)}/../input/08.txt`, {
       encoding: 'utf-8',
     })
     .trim();
