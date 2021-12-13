@@ -119,13 +119,15 @@ export const solve2 = (input) => {
   grid.reverse();
   grid.map((row) => row.reverse());
 
+  const output = [];
   for (let i = 0; i < grid.length; i++) {
+    let line = '';
     for (let j = 0; j < grid[0].length; j++) {
-      if (j % (grid[0].length / 8) === 0) process.stdout.write('  ');
-      process.stdout.write(grid[i][j]);
+      if (j % (grid[0].length / 8) === 0) line += '  ';
+      line += grid[i][j];
     }
-    process.stdout.write('\n');
+    output.push(line);
   }
 
-  return input;
+  return output;
 };
