@@ -124,7 +124,7 @@ export const solve2 = (input) => {
     let line = '';
     for (let j = 0; j < grid[0].length; j++) {
       if (j % (grid[0].length / 8) === 0) line += '  ';
-      line += grid[i][j];
+      line += grid[i][j] === '#' ? '#' : ' ';
     }
     output.push(line);
   }
