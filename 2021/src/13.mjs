@@ -60,5 +60,72 @@ export const solve1 = (input) => {
 };
 
 export const solve2 = (input) => {
+  const items = input.split(/\n\s*\n/);
+
+  const points = items[0]
+    .split('\n')
+    .map((item) => item.trim().split(',').map(Number));
+  const instructions = items[1].split('\n').map((item) =>
+    item
+      .replace('fold along ', '')
+      .split('=')
+      .map((part, index) => (index === 1 ? Number(part) : part))
+  );
+
+  let rows = 0;
+  let columns = 0;
+  points.forEach(([x, y]) => {
+    if (x > columns) columns = x;
+    if (y > rows) rows = y;
+  });
+  rows += 1;
+  columns += 1;
+
+  let grid = new Array(rows);
+  for (let i = 0; i < rows; i++) {
+    grid[i] = new Array(columns).fill('.');
+  }
+
+  points.forEach(([x, y]) => {
+    grid[y][x] = '#';
+  });
+
+  instructions.forEach(([direction, line]) => {
+    if (direction === 'y') {
+      const top = grid.slice(0, line).reverse();
+      const bottom = grid.slice(line + 1);
+      for (let i = 0; i < bottom[0].length; i++) {
+        for (let j = 0; j < bottom.length; j++) {
+          if (bottom[j][i] === '#') top[j][i] = '#';
+        }
+      }
+      grid = top;
+    } else if (direction === 'x') {
+      const left = [];
+      const right = [];
+      grid.forEach((row) => {
+        left.push(row.slice(0, line).reverse());
+        right.push(row.slice(line + 1));
+      });
+      for (let i = 0; i < right[0].length; i++) {
+        for (let j = 0; j < right.length; j++) {
+          if (right[j][i] === '#') left[j][i] = '#';
+        }
+      }
+      grid = left;
+    }
+  });
+
+  grid.reverse();
+  grid.map((row) => row.reverse());
+
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[0].length; j++) {
+      if (j % (grid[0].length / 8) === 0) process.stdout.write('  ');
+      process.stdout.write(grid[i][j]);
+    }
+    process.stdout.write('\n');
+  }
+
   return input;
 };
