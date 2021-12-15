@@ -26,7 +26,7 @@ CN -> C
 `.trim();
 
   t.equal(solve1(input), 1588);
-  t.equal(solve2(input), input);
+  t.equal(solve2(input), 2188189693529);
 
   t.end();
 });
@@ -39,7 +39,7 @@ tap.test('works with puzzle input', (t) => {
     .trim();
 
   t.equal(solve1(input), 4244);
-  t.equal(solve2(input), input);
+  t.equal(solve2(input), 4807056953866);
 
   t.end();
 });
