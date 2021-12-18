@@ -62,9 +62,8 @@ export const solve2 = (input) => {
 
   let state = 'version';
   let remaining = 0;
-  let sub = [];
-  const ops = [];
-  const subs = [];
+  let literal = '';
+  const data = [];
   // eslint-disable-next-line no-constant-condition
   while (true) {
     if (binary.length === 0) break;
@@ -86,25 +85,25 @@ export const solve2 = (input) => {
           // eslint-disable-next-line default-case
           switch (id) {
             case 0:
-              ops.unshift('sum');
+              data.unshift('sum');
               break;
             case 1:
-              ops.unshift('product');
+              data.unshift('product');
               break;
             case 2:
-              ops.unshift('min');
+              data.unshift('min');
               break;
             case 3:
-              ops.unshift('max');
+              data.unshift('max');
               break;
             case 5:
-              ops.unshift('gt');
+              data.unshift('gt');
               break;
             case 6:
-              ops.unshift('lt');
+              data.unshift('lt');
               break;
             case 7:
-              ops.unshift('eq');
+              data.unshift('eq');
               break;
           }
         }
@@ -114,19 +113,18 @@ export const solve2 = (input) => {
         const sliced = binary.slice(0, 5);
         binary = binary.substring(5);
         remaining -= 5;
-        sub.push(parseInt(sliced.slice(1), 2));
+        literal += sliced.slice(1);
         if (sliced[0] === '0') {
-          state = 'version';
-        }
-        if (remaining === 0) {
-          subs.unshift(sub);
-          sub = [];
+          data.unshift(parseInt(literal, 2));
+          literal = '';
+          state = remaining === 0 ? 'cleanup' : 'version';
         }
         break;
       }
       case 'operator': {
         const lengthType = binary.slice(0, 1);
         binary = binary.substring(1);
+        remaining -= 1;
         if (lengthType === '0') {
           const length = binary.slice(0, 15);
           binary = binary.substring(15);
@@ -140,52 +138,68 @@ export const solve2 = (input) => {
         }
         break;
       }
+      case 'cleanup': {
+        if (remaining > 0) {
+          binary = binary.substring(1);
+          remaining -= 1;
+        } else {
+          state = 'version';
+        }
+      }
     }
   }
 
-  const results = [];
-  const comparators = [];
-  for (let i = 0; i < ops.length; i++) {
-    const current = subs.shift();
-    // eslint-disable-next-line default-case
-    switch (ops[i]) {
+  let result;
+  let tmp = [];
+  const operands = [];
+  while (data.length > 0) {
+    const current = data.shift();
+    switch (current) {
       case 'sum':
-        results.unshift(current.reduce((acc, cur) => acc + cur, 0));
+        operands.unshift(tmp.reduce((acc, cur) => acc + cur, 0));
+        tmp = [];
         break;
       case 'product':
-        results.unshift(current.reduce((acc, cur) => acc * cur, 1));
+        operands.unshift(tmp.reduce((acc, cur) => acc * cur, 1));
+        tmp = [];
         break;
       case 'min':
-        results.unshift(Math.min(...current));
+        operands.unshift(Math.min(...tmp));
+        tmp = [];
         break;
       case 'max':
-        results.unshift(Math.max(...current));
+        operands.unshift(Math.max(...tmp));
+        tmp = [];
         break;
-      case 'gt':
-      case 'lt':
-      case 'eq':
-        if (results.length === 0) results.unshift(...current);
-        comparators.unshift(ops[i]);
+      case 'gt': {
+        const a = operands.shift() ?? tmp.shift();
+        const b = operands.shift() ?? tmp.shift();
+        operands.unshift(a > b ? 1 : 0);
+        break;
+      }
+      case 'lt': {
+        const a = operands.shift() ?? tmp.shift();
+        const b = operands.shift() ?? tmp.shift();
+        operands.unshift(a < b ? 1 : 0);
+        break;
+      }
+      case 'eq': {
+        const a = operands.shift() ?? tmp.shift();
+        const b = operands.shift() ?? tmp.shift();
+        operands.unshift(a === b ? 1 : 0);
+        break;
+      }
+      default:
+        tmp.unshift(current);
         break;
     }
+    if (
+      data.length === 0 &&
+      operands.length === 1 &&
+      Number.isInteger(operands[0])
+    )
+      result = operands.shift();
   }
 
-  for (let i = 0; i < comparators.length; i++) {
-    const a = results.shift();
-    const b = results.shift();
-    // eslint-disable-next-line default-case
-    switch (comparators[i]) {
-      case 'gt':
-        results.push(a > b ? 1 : 0);
-        break;
-      case 'lt':
-        results.push(a < b ? 1 : 0);
-        break;
-      case 'eq':
-        results.push(a === b ? 1 : 0);
-        break;
-    }
-  }
-
-  return results[0];
+  return result;
 };
