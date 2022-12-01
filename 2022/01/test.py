@@ -9,7 +9,7 @@ with open(f"{dir}/input.txt", "r") as f:
     input_data = list(map(lambda x: x.strip(), f.readlines()))
 
 
-class TestDay01Solutions(unittest.TestCase):
+class TestSolutions(unittest.TestCase):
     def test_part1_sample(self):
         self.assertEqual(part1(sample_data), 24000)
 
