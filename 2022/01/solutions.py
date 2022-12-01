@@ -6,32 +6,27 @@ def part1(data):
     max = 0
     current = 0
 
-    for item in data:
-        if item == "":
+    for i, item in enumerate(data):
+        if item != "":
+            current += int(item)
+        if item == "" or i == len(data) - 1:
             if current > max:
                 max = current
             current = 0
-            continue
-
-        current += int(item)
 
     return max
 
 
 def part2(data):
     sums = []
-
     current = 0
 
-    for item in data:
-        if item == "":
+    for i, item in enumerate(data):
+        if item != "":
+            current += int(item)
+        if item == "" or i == len(data) - 1:
             sums.append(current)
             current = 0
-            continue
-
-        current += int(item)
-
-    sums.append(current)
 
     return sum(sorted(sums, reverse=True)[0:3])
 

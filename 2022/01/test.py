@@ -13,6 +13,28 @@ class TestDay01Solutions(unittest.TestCase):
     def test_part1_sample(self):
         self.assertEqual(part1(sample_data), 24000)
 
+    def test_part1_sample_different_order(self):
+        self.assertEqual(
+            part1(
+                [
+                    "1000",
+                    "2000",
+                    "3000",
+                    "",
+                    "10000",
+                    "",
+                    "4000",
+                    "5000",
+                    "6000",
+                    "",
+                    "7000",
+                    "8000",
+                    "9000",
+                ],
+            ),
+            24000,
+        )
+
     def test_part1_input(self):
         self.assertEqual(part1(input_data), 69883)
 
