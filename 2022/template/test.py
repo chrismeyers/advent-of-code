@@ -11,16 +11,16 @@ with open(f"{dir}/input.txt", "r") as f:
 
 class TestDay01Solutions(unittest.TestCase):
     def test_part1_sample(self):
-        self.assertEqual(part1(sample_data), "NOT IMPLEMENTED")
+        self.assertEqual(part1(sample_data), 0)
 
     def test_part1_input(self):
-        self.assertEqual(part1(input_data), "NOT IMPLEMENTED")
+        self.assertEqual(part1(input_data), 0)
 
     def test_part2_sample(self):
-        self.assertEqual(part2(sample_data), "NOT IMPLEMENTED")
+        self.assertEqual(part2(sample_data), 0)
 
     def test_part2_input(self):
-        self.assertEqual(part2(input_data), "NOT IMPLEMENTED")
+        self.assertEqual(part2(input_data), 0)
 
 
 if __name__ == "__main__":

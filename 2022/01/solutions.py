@@ -2,7 +2,7 @@ import os
 import sys
 
 
-def part1(data):
+def part1(data: list[str]) -> int:
     max = 0
     current = 0
 
@@ -17,8 +17,8 @@ def part1(data):
     return max
 
 
-def part2(data):
-    sums = []
+def part2(data: list[str]) -> int:
+    sums: list[int] = []
     current = 0
 
     for i, item in enumerate(data):

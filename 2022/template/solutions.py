@@ -2,12 +2,12 @@ import os
 import sys
 
 
-def part1(data):
-    return "NOT IMPLEMENTED"
+def part1(data: list[str]) -> int:
+    return 0
 
 
-def part2(data):
-    return "NOT IMPLEMENTED"
+def part2(data: list[str]) -> int:
+    return 0
 
 
 if __name__ == "__main__":

@@ -7,6 +7,6 @@ if [ $# -lt 1 ]; then
   exit 1
 fi
 
-cp -r .template $1
+cp -r template $1
 
 popd > /dev/null 2>&1
