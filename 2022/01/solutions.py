@@ -41,7 +41,7 @@ if __name__ == "__main__":
     with open(f"{dir}/{sys.argv[1]}.txt", "r") as f:
         data = list(map(lambda x: x.strip(), f.readlines()))
 
-    part = sys.argv[2]
+    part = sys.argv[2] if len(sys.argv) > 2 else None
 
     if part == "1" or part is None:
         print(f"Part 1: {part1(data)}")
