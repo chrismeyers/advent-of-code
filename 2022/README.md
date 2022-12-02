@@ -13,3 +13,10 @@ Templates can be generated for a new day by using `generate.py` and specifying a
 $ python3 generate.py 1
 $ ./generate.py 02
 ```
+
+Tests can be run in the following ways:
+```sh
+$ ./tests.sh
+$ python3 -m unittest 01/test.py
+$ python3 -m 01.test
+```
