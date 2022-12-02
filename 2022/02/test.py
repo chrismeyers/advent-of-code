@@ -17,10 +17,10 @@ class TestDay02Solutions(unittest.TestCase):
         self.assertEqual(part1(input_data), 10404)
 
     def test_part2_sample(self):
-        self.assertEqual(part2(sample_data), 0)
+        self.assertEqual(part2(sample_data), 12)
 
     def test_part2_input(self):
-        self.assertEqual(part2(input_data), 0)
+        self.assertEqual(part2(input_data), 10334)
 
 
 if __name__ == "__main__":
