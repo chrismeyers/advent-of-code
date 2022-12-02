@@ -2,18 +2,10 @@
 
 > Requires Python 3.11.0
 
-Puzzles can be solved by running individual `solutions.py` programs. These programs accept up to two positional arguments:
-
-| Description | Required | Values |
-| ----------- | -------- | ------ |
-| The name of the input file to load, excluding file extension | **Y** | <ul><li>`sample`</li><li>`input`</li></ul> |
-| The part to run (omitting the part runs all parts for the given day) | N | <ul><li>`1`</li><li>`2`</li></ul> |
-
-
-Solution programs can be invoked in the following ways:
+Puzzles can be solved by using `solver.py` and specifying a day number, an input type (`sample` or `input`), and an optional part number (`1` or `2`). Omitting the part number runs all parts for the given day. The solver can be invoked in the following ways:
 ```sh
-$ python3 01/solutions.py sample
-$ python3 01/solutions.py input 1
+$ python3 solver.py 1 sample
+$ ./solver.py 01 input 1
 ```
 
 Templates can be generated for a new day by using `generate.sh` and specifying a day number. The generator can be invoked in the following way:
