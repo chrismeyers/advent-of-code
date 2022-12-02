@@ -15,10 +15,10 @@ if __name__ == "__main__":
 
     formatted_day = day.zfill(2)
 
-    module = importlib.import_module(f"days.d{formatted_day}.solutions", ".")
+    module = importlib.import_module(f"day{formatted_day}.solutions", ".")
 
     dir = os.path.dirname(os.path.realpath(__file__))
-    with open(f"{dir}/days/d{formatted_day}/{input_type}.txt", "r") as f:
+    with open(f"{dir}/day{formatted_day}/{input_type}.txt", "r") as f:
         data = f.read()
 
     if part == "1" or part is None:

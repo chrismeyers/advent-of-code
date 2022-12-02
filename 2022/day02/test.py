@@ -1,6 +1,6 @@
 import os
 import unittest
-from days.d02.solutions import part1, part2
+from day02.solutions import part1, part2
 
 dir = os.path.dirname(os.path.realpath(__file__))
 with open(f"{dir}/sample.txt", "r") as f:

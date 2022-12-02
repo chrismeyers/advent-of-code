@@ -14,10 +14,9 @@ $ python3 generate.py 1
 $ ./generate.py 02
 ```
 
-Tests can be run in the following ways:
+Running all test suites can be accomplished by using the `tests.sh` script. This script can be run from anywhere in the filesystem. In order to run a specific test suite, one of the following commands can be run from this directory:
 ```sh
-$ ./tests.sh
-$ python3 days/d01/test.py
-$ python3 -m unittest days/d01/test.py
-$ python3 -m days.d01.test
+$ python3 day01/test.py
+$ python3 -m unittest day01/test.py
+$ python3 -m day01.test
 ```
