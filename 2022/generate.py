@@ -15,7 +15,7 @@ if __name__ == "__main__":
     formatted_day = day.zfill(2)
     dir = os.path.dirname(os.path.realpath(__file__))
 
-    day_dir = f"{dir}/{formatted_day}"
+    day_dir = f"{dir}/days/d{formatted_day}"
 
     if os.path.isdir(day_dir):
         overwrite = input(f"Day {day} already exists. Overwrite? [y/N] ")
@@ -56,7 +56,7 @@ if __name__ == "__main__":
                 [
                     "import os",
                     "import unittest",
-                    "from .solutions import part1, part2",
+                    f"from days.d{formatted_day}.solutions import part1, part2",
                     "",
                     "dir = os.path.dirname(os.path.realpath(__file__))",
                     'with open(f"{dir}/sample.txt", "r") as f:',
