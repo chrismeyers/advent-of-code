@@ -39,11 +39,11 @@ if __name__ == "__main__":
         f.write(
             "\n".join(
                 [
-                    "def part1(data: list[str]) -> int:",
+                    "def part1(input):",
                     "    return 0",
                     "",
                     "",
-                    "def part2(data: list[str]) -> int:",
+                    "def part2(input):",
                     "    return 0",
                     "",
                 ]
@@ -60,9 +60,9 @@ if __name__ == "__main__":
                     "",
                     "dir = os.path.dirname(os.path.realpath(__file__))",
                     'with open(f"{dir}/sample.txt", "r") as f:',
-                    "    sample_data = list(map(lambda x: x.strip(), f.readlines()))",
+                    "    sample_data = f.read()",
                     'with open(f"{dir}/input.txt", "r") as f:',
-                    "    input_data = list(map(lambda x: x.strip(), f.readlines()))",
+                    "    input_data = f.read()",
                     "",
                     "",
                     f"class TestDay{formatted_day}Solutions(unittest.TestCase):",

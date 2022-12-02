@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
     dir = os.path.dirname(os.path.realpath(__file__))
     with open(f"{dir}/{formatted_day}/{input_type}.txt", "r") as f:
-        data = list(map(lambda x: x.strip(), f.readlines()))
+        data = f.read()
 
     if part == "1" or part is None:
         print(module.part1(data))

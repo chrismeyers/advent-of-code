@@ -1,4 +1,6 @@
-def part1(data: list[str]) -> int:
+def part1(data):
+    data = list(map(lambda x: x.strip(), data.split("\n")))
+
     max = 0
     current = 0
 
@@ -13,8 +15,10 @@ def part1(data: list[str]) -> int:
     return max
 
 
-def part2(data: list[str]) -> int:
-    sums: list[int] = []
+def part2(data):
+    data = list(map(lambda x: x.strip(), data.split("\n")))
+
+    sums = []
     current = 0
 
     for i, item in enumerate(data):

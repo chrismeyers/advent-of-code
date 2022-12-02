@@ -4,9 +4,9 @@ from .solutions import part1, part2
 
 dir = os.path.dirname(os.path.realpath(__file__))
 with open(f"{dir}/sample.txt", "r") as f:
-    sample_data = list(map(lambda x: x.strip(), f.readlines()))
+    sample_data = f.read()
 with open(f"{dir}/input.txt", "r") as f:
-    input_data = list(map(lambda x: x.strip(), f.readlines()))
+    input_data = f.read()
 
 
 class TestDay01Solutions(unittest.TestCase):
@@ -16,21 +16,23 @@ class TestDay01Solutions(unittest.TestCase):
     def test_part1_sample_different_order(self):
         self.assertEqual(
             part1(
-                [
-                    "1000",
-                    "2000",
-                    "3000",
-                    "",
-                    "10000",
-                    "",
-                    "4000",
-                    "5000",
-                    "6000",
-                    "",
-                    "7000",
-                    "8000",
-                    "9000",
-                ],
+                "\n".join(
+                    [
+                        "1000",
+                        "2000",
+                        "3000",
+                        "",
+                        "10000",
+                        "",
+                        "4000",
+                        "5000",
+                        "6000",
+                        "",
+                        "7000",
+                        "8000",
+                        "9000",
+                    ]
+                ),
             ),
             24000,
         )
