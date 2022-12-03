@@ -19,4 +19,21 @@ def part1(data):
 
 
 def part2(data):
-    return 0
+    data = list(map(lambda x: x.strip(), data.strip().split("\n")))
+
+    sum = 0
+    lowercase_offset = ord("a") - 1
+    uppercase_offset = ord("A") - 27
+
+    groups = []
+    for i in range(0, len(data), 3):
+        groups.append(data[i : i + 3])
+
+    for group1, group2, group3 in groups:
+        intersection = list(set(group1) & set(group2) & set(group3))[0]
+        if intersection.isupper():
+            sum += ord(intersection) - uppercase_offset
+        else:
+            sum += ord(intersection) - lowercase_offset
+
+    return sum
