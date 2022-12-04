@@ -1,11 +1,8 @@
 def part1(data):
     data = list(
         map(
-            lambda z: [[int(z[0][0]), int(z[0][1])], [int(z[1][0]), int(z[1][1])]],
-            map(
-                lambda y: [y[0].split("-"), y[1].split("-")],
-                map(lambda x: x.strip().split(","), data.strip().split("\n")),
-            ),
+            lambda y: list(map(lambda z: list(map(int, z.split("-"))), y)),
+            map(lambda x: x.strip().split(","), data.strip().split("\n")),
         )
     )
 
@@ -23,11 +20,8 @@ def part1(data):
 def part2(data):
     data = list(
         map(
-            lambda z: [[int(z[0][0]), int(z[0][1])], [int(z[1][0]), int(z[1][1])]],
-            map(
-                lambda y: [y[0].split("-"), y[1].split("-")],
-                map(lambda x: x.strip().split(","), data.strip().split("\n")),
-            ),
+            lambda y: list(map(lambda z: list(map(int, z.split("-"))), y)),
+            map(lambda x: x.strip().split(","), data.strip().split("\n")),
         )
     )
 
