@@ -19,10 +19,10 @@ class TestDay04Solutions(unittest.TestCase):
         self.assertEqual(part1(self.input_data), 490)
 
     def test_part2_sample(self):
-        self.assertEqual(part2(self.sample_data), 0)
+        self.assertEqual(part2(self.sample_data), 4)
 
     def test_part2_input(self):
-        self.assertEqual(part2(self.input_data), 0)
+        self.assertEqual(part2(self.input_data), 921)
 
 
 if __name__ == "__main__":
