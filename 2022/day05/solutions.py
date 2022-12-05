@@ -4,6 +4,7 @@ def _parse(data):
     raw_crate_lines = []
     commands = []
 
+    # Parse crate and command sections
     for line in data:
         if line == "":
             if num_crates is None:
@@ -18,8 +19,8 @@ def _parse(data):
 
         last_line = line
 
+    # Parse raw crate rows into 2D lists
     raw_crates = [["" for _ in range(0, num_crates)] for _ in raw_crate_lines]
-
     for i, line in enumerate(raw_crate_lines):
         chunks = []
         for j in range(0, len(line), 4):
@@ -28,15 +29,26 @@ def _parse(data):
         for j, chunk in enumerate(chunks):
             raw_crates[i][j] = chunk
 
+    # Transpose crates from rows into stacks
     crates = [["" for _ in raw_crate_lines] for _ in range(0, num_crates)]
-
     for i, row in enumerate(raw_crates):
         for j, item in enumerate(row):
             crates[j][i] = item
 
+    # Remove any empty space
     crates = list(map(lambda x: list(filter(lambda y: y not in [""], x)), crates))
 
     return crates, commands
+
+
+def _build_message(crates):
+    message = ""
+
+    for stack in crates:
+        if len(stack) > 0:
+            message += stack[0].replace("[", "").replace("]", "")
+
+    return message
 
 
 def part1(data):
@@ -49,13 +61,7 @@ def part1(data):
             value = crates[source - 1].pop(0)
             crates[dest - 1].insert(0, value)
 
-    message = ""
-
-    for stack in crates:
-        if len(stack) > 0:
-            message += stack[0].replace("[", "").replace("]", "")
-
-    return message
+    return _build_message(crates)
 
 
 def part2(data):
@@ -70,10 +76,4 @@ def part2(data):
 
         crates[dest - 1] = values + crates[dest - 1]
 
-    message = ""
-
-    for stack in crates:
-        if len(stack) > 0:
-            message += stack[0].replace("[", "").replace("]", "")
-
-    return message
+    return _build_message(crates)
