@@ -1,6 +1,4 @@
-def part1(data):
-    data = data.split("\n")
-
+def _parse(data):
     last_line = None
     num_crates = None
     raw_crate_lines = []
@@ -37,6 +35,14 @@ def part1(data):
             crates[j][i] = item
 
     crates = list(map(lambda x: list(filter(lambda y: y not in [""], x)), crates))
+
+    return crates, commands
+
+
+def part1(data):
+    data = data.split("\n")
+
+    crates, commands = _parse(data)
 
     for amount, source, dest in commands:
         for _ in range(amount):
