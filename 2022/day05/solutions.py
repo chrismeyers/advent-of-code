@@ -59,4 +59,21 @@ def part1(data):
 
 
 def part2(data):
-    return 0
+    data = data.split("\n")
+
+    crates, commands = _parse(data)
+
+    for amount, source, dest in commands:
+        values = []
+        for _ in range(amount):
+            values.append(crates[source - 1].pop(0))
+
+        crates[dest - 1] = values + crates[dest - 1]
+
+    message = ""
+
+    for stack in crates:
+        if len(stack) > 0:
+            message += stack[0].replace("[", "").replace("]", "")
+
+    return message
