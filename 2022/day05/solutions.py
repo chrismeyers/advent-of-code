@@ -1,0 +1,56 @@
+def part1(data):
+    data = data.split("\n")
+
+    last_line = None
+    num_crates = None
+    raw_crate_lines = []
+    commands = []
+
+    for line in data:
+        if line == "":
+            if num_crates is None:
+                num_crates = len(" ".join(last_line.split()).split(" "))
+                raw_crate_lines.pop()
+            continue
+
+        if num_crates is None:
+            raw_crate_lines.append(line)
+        else:
+            commands.append(list(map(int, line.split(" ")[1::2])))
+
+        last_line = line
+
+    raw_crates = [["" for _ in range(0, num_crates)] for _ in raw_crate_lines]
+
+    for i, line in enumerate(raw_crate_lines):
+        chunks = []
+        for j in range(0, len(line), 4):
+            chunks.append(line[j : j + 4].strip())
+
+        for j, chunk in enumerate(chunks):
+            raw_crates[i][j] = chunk
+
+    crates = [["" for _ in raw_crate_lines] for _ in range(0, num_crates)]
+
+    for i, row in enumerate(raw_crates):
+        for j, item in enumerate(row):
+            crates[j][i] = item
+
+    crates = list(map(lambda x: list(filter(lambda y: y not in [""], x)), crates))
+
+    for amount, source, dest in commands:
+        for _ in range(amount):
+            value = crates[source - 1].pop(0)
+            crates[dest - 1].insert(0, value)
+
+    message = ""
+
+    for stack in crates:
+        if len(stack) > 0:
+            message += stack[0].replace("[", "").replace("]", "")
+
+    return message
+
+
+def part2(data):
+    return 0
