@@ -25,10 +25,16 @@ class TestDay06Solutions(unittest.TestCase):
         self.assertEqual(part1(self.input_data), 1109)
 
     def test_part2_sample(self):
-        self.assertEqual(part2(self.sample_data), 0)
+        self.assertEqual(part2(self.sample_data), 19)
+
+    def test_part2_additional_samples(self):
+        self.assertEqual(part2("bvwbjplbgvbhsrlpgdmjqwftvncz"), 23)
+        self.assertEqual(part2("nppdvjthqldpwncqszvftbrmjlhg"), 23)
+        self.assertEqual(part2("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg"), 29)
+        self.assertEqual(part2("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw"), 26)
 
     def test_part2_input(self):
-        self.assertEqual(part2(self.input_data), 0)
+        self.assertEqual(part2(self.input_data), 3965)
 
 
 if __name__ == "__main__":

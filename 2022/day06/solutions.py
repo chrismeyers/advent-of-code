@@ -18,4 +18,16 @@ def part1(data):
 
 
 def part2(data):
-    return 0
+    data = data.strip()
+
+    position = 0
+
+    for i, _ in enumerate(data):
+        current = data[i : i + 14]
+        counts = Counter(current)
+
+        if len(counts) == 14:
+            position = i + 14
+            break
+
+    return position
