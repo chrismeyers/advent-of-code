@@ -1,33 +1,23 @@
 from collections import Counter
 
 
-def part1(data):
-    data = data.strip()
-
+def _solve(data, num_distinct):
     position = 0
 
     for i, _ in enumerate(data):
-        current = data[i : i + 4]
+        current = data[i : i + num_distinct]
         counts = Counter(current)
 
-        if len(counts) == 4:
-            position = i + 4
+        if len(counts) == num_distinct:
+            position = i + num_distinct
             break
 
     return position
+
+
+def part1(data):
+    return _solve(data.strip(), 4)
 
 
 def part2(data):
-    data = data.strip()
-
-    position = 0
-
-    for i, _ in enumerate(data):
-        current = data[i : i + 14]
-        counts = Counter(current)
-
-        if len(counts) == 14:
-            position = i + 14
-            break
-
-    return position
+    return _solve(data.strip(), 14)
