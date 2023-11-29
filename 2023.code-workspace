@@ -1,0 +1,12 @@
+{
+  "folders": [
+    {
+      "path": "2023"
+    }
+  ],
+  "extensions": {
+    "recommendations": [
+      "Shopify.ruby-lsp"
+    ]
+  }
+}
