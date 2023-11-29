@@ -54,11 +54,11 @@ File.open(File.join(day_dir, 'test.rb'), 'w') do |f|
   code = <<~RUBY
     # frozen_string_literal: true
 
-    require 'test/unit'
+    require 'minitest/autorun'
     require_relative 'solutions'
 
     # Tests for Advent of Code 2023.#{day.to_i}
-    class Day#{day}Test < Test::Unit::TestCase
+    class TestDay#{day} < Minitest::Test
       def setup
         @sample_data = File.read("\#{__dir__}/sample.txt")
         @input_data = File.read("\#{__dir__}/input.txt")

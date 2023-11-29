@@ -2,6 +2,8 @@
 
 > Requires Ruby 3.2.2
 
+## Solver
+
 Puzzles can be solved by using `solver.rb` and specifying a day number, an input type (`sample` or `input`), and an optional part number (`1` or `2`).
 Omitting the part number runs all parts for the given day.
 The solver can be invoked in the following ways:
@@ -10,6 +12,8 @@ The solver can be invoked in the following ways:
 $ ruby solver.rb 1 sample
 ```
 
+## Templates
+
 Templates can be generated for a new day by using `generate.rb` and specifying a day number.
 The generator can be invoked in the following ways:
 
@@ -17,6 +21,16 @@ The generator can be invoked in the following ways:
 $ ruby generate.rb 1
 ```
 
-Running all test suites can be accomplished by running `ruby tests.rb`.
-This script can be run from anywhere in the filesystem.
-In order to run a specific test suite, a command such as `ruby day01/test.rb` can be run from this directory.
+## Tests
+
+Run all tests:
+
+```sh
+$ ruby tests.rb
+```
+
+Run a specific test suite:
+
+```sh
+$ ruby day01/test.rb
+```
