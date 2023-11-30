@@ -13,7 +13,7 @@ part = ARGV[2].to_i
 
 puts "Running day #{day.to_i}..."
 
-input = File.open(File.join(__dir__, "day#{day}", "#{input_type}.txt"))
+input = File.read(File.join(__dir__, "day#{day}", "#{input_type}.txt"))
 
 if [0, 1].include?(part)
   # Dynamic version of: Day01.part1(input)
