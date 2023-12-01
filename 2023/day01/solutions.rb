@@ -37,8 +37,7 @@ module Day01
 
       line.delete!('^0-9')
 
-      nums = line.split('')
-      sum += (nums[0].to_s + nums[-1].to_s).to_i
+      sum += (line[0] + line[-1]).to_i
     end
 
     sum
