@@ -36,7 +36,27 @@ module Day02
   end
 
   def part2(input)
-    _data = input.each_line(chomp: true).filter { |line| line != '' }
-    2
+    data = input.each_line(chomp: true).filter { |line| line != '' }
+
+    sum = 0
+    data.each do |line|
+      sets = line.split(':')[1].split(';').each.map { |set| set.split(',') }
+
+      max_red = max_green = max_blue = 0
+
+      sets.each do |set|
+        set.each do |item|
+          count = item.strip.split(' ')[0].to_i
+
+          max_red = count if item.include?('red') && count > max_red
+          max_green = count if item.include?('green') && count > max_green
+          max_blue = count if item.include?('blue') && count > max_blue
+        end
+      end
+
+      sum += max_red * max_green * max_blue
+    end
+
+    sum
   end
 end
