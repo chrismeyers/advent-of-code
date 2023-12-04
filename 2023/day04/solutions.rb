@@ -9,7 +9,7 @@ module Day04
 
     score = 0
     data.each do |line|
-      winning, have = line.split(':')[1].split('|').map { |group| group.split(' ').map { |item| item.to_i } }
+      winning, have = line.split(':')[1].split('|').map { |group| group.split(' ').map(&:to_i) }
       intersection = winning.intersection(have)
 
       score += intersection.empty? ? 0 : 2**(intersection.length - 1)
@@ -19,7 +19,31 @@ module Day04
   end
 
   def part2(input)
-    _data = input.each_line(chomp: true).filter { |line| line != '' }
-    2
+    data = input.each_line(chomp: true).filter { |line| line != '' }
+
+    counts = Array.new(data.length, 0)
+    wins = Array.new(data.length, 0)
+    data.each_with_index do |line, i|
+      winning, have = line.split(':')[1].split('|').map { |group| group.split(' ').map(&:to_i) }
+      intersection = winning.intersection(have)
+
+      intersection.each_with_index do |_, j|
+        counts[i + j + 1] += 1
+      end
+
+      wins[i] = intersection.length
+    end
+
+    counts.each_with_index do |count, i|
+      next unless count >= 1
+
+      count.times do
+        wins[i].times do |j|
+          counts[i + j + 1] += 1
+        end
+      end
+    end
+
+    counts.sum + data.length
   end
 end

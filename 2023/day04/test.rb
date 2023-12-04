@@ -19,10 +19,10 @@ class TestDay04 < Minitest::Test
   end
 
   def test_part2_sample
-    assert_equal(2, Day04.part2(@sample_data))
+    assert_equal(30, Day04.part2(@sample_data))
   end
 
   def test_part2_input
-    assert_equal(2, Day04.part2(@input_data))
+    assert_equal(15_455_663, Day04.part2(@input_data))
   end
 end
